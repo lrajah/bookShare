@@ -53,13 +53,16 @@ public class CreateUsers {
 		
 		System.out.println("Livre: " + livre2.nbPages());
 		
-		((Loueur)loueur).addBook(livre1);
-		((Loueur)loueur).addBook(livre2);
+		((Loueur)loueur).addBook(livre1,2);
+		((Loueur)loueur).addBook(livre2,3);
 		
 		System.out.println(((Loueur)loueur).nBlivres());
 		
 		System.out.println(((Loueur)loueur).listLivres());
 	    
+		
+		((Loueur)loueur).addBook(livre1, 1);
+		System.out.println(((Loueur)loueur).listLivres());
 	}
 	
 	

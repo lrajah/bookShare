@@ -12,7 +12,7 @@ import hello.users.Users;
  *
  */
 public interface LoueurInterface {
-	public Users addBook(Livre livre);
+	public Users addBook(Livre livre, Integer nbLivre);
 	public Users loan(Livre livre);
 	public Users calculeCotisation();
 	public Users loueurToEmprunteur(Users loueur);

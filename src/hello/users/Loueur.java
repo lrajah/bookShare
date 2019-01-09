@@ -4,6 +4,7 @@
 package hello.users;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import hello.livre.Cotisation;
 import hello.livre.Livre;
@@ -14,21 +15,32 @@ import hello.users.Users;
  *
  */
 public class Loueur extends Users implements LoueurInterface {
-	ArrayList<Livre> livres;
+	HashMap<Livre,Integer> livres;
 	ArrayList<Integer> nbLivre;  
 	private Cotisation cotisation;
 	
 	public Loueur() {
-		this.livres = new ArrayList<Livre>();
+		this.livres = new HashMap<Livre, Integer>();
+		this.nbLivre = new ArrayList<Integer>();
 	}
 	@Override
-	public Users addBook(Livre livre) {
+	public Users addBook(Livre livre, Integer nbLivre) {
 		// TODO Auto-generated method stub
 		
 		int indice= 0;
+		
 		indice=this.livres.size();
-		if(!this.livres.contains(livre)) {
-			this.livres.add(livre);
+		if(!this.livres.containsValue(livre)) {
+			this.livres.put(livre, nbLivre);
+			this.nbLivre.add(nbLivre);
+		}
+		else {
+			indice= this.livres.indexOf(livre);
+			//System.out.println(this.nbLivre.get(indice));
+			nbLivre+= this.nbLivre.get(indice);
+			//System.out.println(nbLivre);
+			this.nbLivre.add(indice, nbLivre);;
+			
 		}
 		
 		return this;
@@ -43,8 +55,8 @@ public class Loueur extends Users implements LoueurInterface {
 	public String listLivres(){
 		
 		String message="Livres de la collection de " + this.nom + "\n";
-		for(Livre i : this.livres) {
-			message+=i.titre() + "\n";
+		for(int i=0 ; i< this.livres.size();i++) {
+			message+=this.livres.get(i).titre() + " Nombre:  " + this.nbLivre.get(i) +"\n";
 		}
 		return message;
 	}

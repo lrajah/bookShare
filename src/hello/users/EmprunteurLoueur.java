@@ -21,7 +21,7 @@ public class EmprunteurLoueur extends Users implements LoueurInterface, Emprunte
 	}
 
 	@Override
-	public Users addBook(Livre livre) {
+	public Users addBook(Livre livre, Integer nbLivre) {
 		// TODO Auto-generated method stub
 		return null;
 	}
