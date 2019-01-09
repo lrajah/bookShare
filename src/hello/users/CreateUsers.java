@@ -63,6 +63,9 @@ public class CreateUsers {
 		
 		((Loueur)loueur).addBook(livre1, 1);
 		System.out.println(((Loueur)loueur).listLivres());
+		
+		((Loueur) loueur).loan(livre1, 5);
+		System.out.println(((Loueur)loueur).listLivres());
 	}
 	
 	

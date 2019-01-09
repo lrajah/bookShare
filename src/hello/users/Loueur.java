@@ -5,6 +5,7 @@ package hello.users;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import hello.livre.Cotisation;
 import hello.livre.Livre;
@@ -30,16 +31,16 @@ public class Loueur extends Users implements LoueurInterface {
 		int indice= 0;
 		
 		indice=this.livres.size();
-		if(!this.livres.containsValue(livre)) {
+		if(!this.livres.containsKey(livre)) {
 			this.livres.put(livre, nbLivre);
 			this.nbLivre.add(nbLivre);
 		}
 		else {
-			indice= this.livres.indexOf(livre);
 			//System.out.println(this.nbLivre.get(indice));
-			nbLivre+= this.nbLivre.get(indice);
-			//System.out.println(nbLivre);
-			this.nbLivre.add(indice, nbLivre);;
+			nbLivre+= this.livres.get(livre);
+			System.out.println(nbLivre);
+			this.livres.replace(livre, nbLivre);
+			//this.nbLivre.add(indice, nbLivre);
 			
 		}
 		
@@ -55,15 +56,21 @@ public class Loueur extends Users implements LoueurInterface {
 	public String listLivres(){
 		
 		String message="Livres de la collection de " + this.nom + "\n";
-		for(int i=0 ; i< this.livres.size();i++) {
-			message+=this.livres.get(i).titre() + " Nombre:  " + this.nbLivre.get(i) +"\n";
+		for(Map.Entry<Livre,Integer> me : this.livres.entrySet()) {
+			message+=me.getKey().titre() + " & Nombre: " + me.getValue()+"\n";
 		}
 		return message;
 	}
 	@Override
-	public Users loan(Livre livre) {
+	public Users loan(Livre livre, int nbLivre) {
 		// TODO Auto-generated method stub
-		return null;
+		if(this.livres.containsKey(livre)==true && this.livres.get(livre)>=nbLivre) {
+			int oldValue=this.livres.get(livre);
+			oldValue-=nbLivre;
+			this.livres.replace(livre, oldValue);
+		}
+		
+		return this;
 	}
 	@Override
 	public Users calculeCotisation() {
