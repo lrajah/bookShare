@@ -17,30 +17,22 @@ import hello.users.Users;
  */
 public class Loueur extends Users implements LoueurInterface {
 	HashMap<Livre,Integer> livres;
-	ArrayList<Integer> nbLivre;  
 	private Cotisation cotisation;
 	
 	public Loueur() {
 		this.livres = new HashMap<Livre, Integer>();
-		this.nbLivre = new ArrayList<Integer>();
 	}
 	@Override
 	public Users addBook(Livre livre, Integer nbLivre) {
 		// TODO Auto-generated method stub
 		
-		int indice= 0;
-		
-		indice=this.livres.size();
 		if(!this.livres.containsKey(livre)) {
 			this.livres.put(livre, nbLivre);
-			this.nbLivre.add(nbLivre);
 		}
 		else {
-			//System.out.println(this.nbLivre.get(indice));
 			nbLivre+= this.livres.get(livre);
 			System.out.println(nbLivre);
 			this.livres.replace(livre, nbLivre);
-			//this.nbLivre.add(indice, nbLivre);
 			
 		}
 		
@@ -56,8 +48,8 @@ public class Loueur extends Users implements LoueurInterface {
 	public String listLivres(){
 		
 		String message="Livres de la collection de " + this.nom + "\n";
-		for(Map.Entry<Livre,Integer> me : this.livres.entrySet()) {
-			message+=me.getKey().titre() + " & Nombre: " + me.getValue()+"\n";
+		for(Map.Entry<Livre,Integer> livre : this.livres.entrySet()) {
+			message+=livre.getKey().titre() + " & Nombre: " + livre.getValue()+"\n";
 		}
 		return message;
 	}
