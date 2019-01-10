@@ -1,0 +1,4 @@
+nom; prenom; naissance
+Hugo; Victor; 11/05/1802
+Asimov; Isaac; 21/05/1918
+Barjaval; Remi; 21/06/1589
