@@ -4,9 +4,11 @@
 package hello.users;
 
 import java.text.ParseException;
-
+import java.io.*;
 import hello.livre.Author;
 import hello.livre.Livre;
+import hello.livre.exceptions.PersonalException;
+import hello.tools.AuthorImport;
 
 /**
  * @author Dell
@@ -17,8 +19,9 @@ public class CreateUsers {
 	/**
 	 * @param args
 	 * @throws ParseException 
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws ParseException,PersonalException, IOException {
 		// TODO Auto-generated method stub
 		Users loueur= CreateUsers.createLoueur();
 		Users emprunteur= CreateUsers.createEmprunteur();
@@ -72,8 +75,21 @@ public class CreateUsers {
 		System.out.println(((Loueur)loueur).listLivres());
 		
 		// Création d'auteur
-		 Author asimov= Author.getAuthor();
-		 
+		
+//		try {
+//			Author asimov= Author.getAuthor();
+//			System.out.println("Auteur: " + asimov.nom());
+//		}catch(ParseException e) {
+//			System.out.println("La date de naissance de est incorecte");
+//			System.out.println(e.getMessage());
+//		}catch(PersonalException naissance) {
+//			System.out.println(naissance.getMessage());
+//		}
+		
+		AuthorImport auteur=new AuthorImport();
+//		System.out.println(auteur.getAuthor().size());
+		
+		System.out.println(Author.getAuthor(auteur.getAuthor()).get(2).nom());
 	}
 	
 	

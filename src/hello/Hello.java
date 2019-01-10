@@ -10,6 +10,7 @@ import hello.livre.Cotisation;
 import hello.livre.Emprunteur;
 import hello.livre.Livre;
 import hello.livre.Loueur;
+import hello.livre.exceptions.PersonalException;
 
 /**
  * @author Dell
@@ -20,8 +21,9 @@ public class Hello {
 	/**
 	 * @param args
 	 * @throws ParseException 
+	 * @throws PersonalException 
 	 */
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws ParseException, PersonalException {
 		// TODO Auto-generated method stub
 		System.out.println("Hello Java");
 		
