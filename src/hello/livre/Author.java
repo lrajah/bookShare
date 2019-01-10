@@ -3,7 +3,10 @@
  */
 package hello.livre;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * @author Dell
@@ -52,5 +55,26 @@ public class Author {
 		Author auteur=new Author(nom, prenom, date);
 		return auteur;
 		}
+	
+	public static Author getAuthor() throws ParseException {
+		
+		Scanner scanner=new Scanner(System.in);
+		System.out.println("Nom de l'auteur: ");
+		String nom = scanner.nextLine();
+		scanner.nextLine();
+		
+		System.out.println("Prenom de l'auteur: ");
+		String prenom = scanner.nextLine();
+		scanner.nextLine();
+		
+		System.out.println("Date de naissance de l'auteur (\"dd/MM/yyyy\"): ");
+		String dateNaissance = scanner.nextLine();
+		scanner.nextLine();
+		Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(dateNaissance);
+		
+		return getAuthor(nom,prenom,date1);
+		
+		
+	}
 	
 }

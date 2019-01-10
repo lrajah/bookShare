@@ -3,6 +3,9 @@
  */
 package hello.users;
 
+import java.text.ParseException;
+
+import hello.livre.Author;
 import hello.livre.Livre;
 
 /**
@@ -13,8 +16,9 @@ public class CreateUsers {
 
 	/**
 	 * @param args
+	 * @throws ParseException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		// TODO Auto-generated method stub
 		Users loueur= CreateUsers.createLoueur();
 		Users emprunteur= CreateUsers.createEmprunteur();
@@ -66,6 +70,10 @@ public class CreateUsers {
 		
 		((Loueur) loueur).loan(livre1, 5);
 		System.out.println(((Loueur)loueur).listLivres());
+		
+		// Création d'auteur
+		 Author asimov= Author.getAuthor();
+		 
 	}
 	
 	
@@ -88,5 +96,7 @@ public class CreateUsers {
 				.prenom("Vamoi")
 				.numAd("021545487");
 	}
+	
+	
 
 }
