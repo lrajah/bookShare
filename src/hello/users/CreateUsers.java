@@ -89,7 +89,7 @@ public class CreateUsers {
 		AuthorImport auteur=new AuthorImport();
 //		System.out.println(auteur.getAuthor().size());
 		
-		System.out.println(Author.getAuthor(auteur.getAuthor()).get(2).nom());
+		System.out.println(Author.getAuthor(auteur.getAuthor()).size());
 	}
 	
 	

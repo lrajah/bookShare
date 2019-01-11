@@ -59,7 +59,7 @@ public class AuthorImport {
 	public ArrayList<String[]> getAuthor() throws IOException{
 		
 		AuthorImport.readAndCreateArray();
-		System.out.println(auteurs.size());
+//		System.out.println(auteurs.size());
 		return auteurs;
 		
 	}

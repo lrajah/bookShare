@@ -18,9 +18,14 @@ import hello.users.Users;
 public class Loueur extends Users implements LoueurInterface {
 	HashMap<Livre,Integer> livres;
 	private Cotisation cotisation;
-	
+	private boolean assStock;
+	private int collectionSize;
 	public Loueur() {
 		this.livres = new HashMap<Livre, Integer>();
+	}
+	
+	interface GetSize{
+		public int getSize (HashMap<Livre,Integer> books, boolean getStock);
 	}
 	@Override
 	public Users addBook(Livre livre, Integer nbLivre) {
@@ -44,7 +49,24 @@ public class Loueur extends Users implements LoueurInterface {
 		message+=this.livres.size();
 		return message;
 	}
-	
+	public int getCollectionSize(boolean asStock) {
+		this.assStock=asStock;
+		
+		GetSize size =(books, getStock) -> {
+			if(!(getStock)) {
+				return books.size();
+			}
+			else {
+				int stock =0;
+				for(Livre livre : books.keySet()) {
+					stock+=books.get(livre);
+				}
+				return stock;
+			}
+		};
+		return size.getSize(this.livres, this.assStock);
+		
+	}
 	public String listLivres(){
 		
 		String message="Livres de la collection de " + this.nom + "\n";
